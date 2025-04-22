@@ -92,11 +92,21 @@ export default {
 					'0%': { opacity: '0', transform: 'translateY(10px)' }, 
 					'100%': { opacity: '1', transform: 'translateY(0)' } 
 				},
+				'card-flip': {
+					'0%': { transform: 'rotateY(0deg)' },
+					'100%': { transform: 'rotateY(180deg)' }
+				},
+				'card-flip-back': {
+					'0%': { transform: 'rotateY(180deg)' },
+					'100%': { transform: 'rotateY(0deg)' }
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'card-flip': 'card-flip 0.5s ease-out forwards',
+				'card-flip-back': 'card-flip-back 0.5s ease-out forwards'
 			}
 		}
 	},
