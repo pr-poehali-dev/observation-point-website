@@ -15,6 +15,8 @@ const AudioPlayer = ({ audioSrc, title }: AudioPlayerProps) => {
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(1);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -22,6 +24,7 @@ const AudioPlayer = ({ audioSrc, title }: AudioPlayerProps) => {
 
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
+      setIsLoaded(true);
     };
 
     const handleTimeUpdate = () => {
@@ -33,14 +36,21 @@ const AudioPlayer = ({ audioSrc, title }: AudioPlayerProps) => {
       setCurrentTime(0);
     };
 
+    const handleError = () => {
+      setError("Ошибка загрузки аудиофайла");
+      setIsLoaded(true); // Помечаем как загруженное, чтобы показать ошибку
+    };
+
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("error", handleError);
 
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("error", handleError);
     };
   }, [audioRef]);
 
@@ -49,14 +59,21 @@ const AudioPlayer = ({ audioSrc, title }: AudioPlayerProps) => {
     if (audioRef.current) {
       setCurrentTime(0);
       setIsPlaying(false);
+      setError(null);
+      setIsLoaded(false);
     }
   }, [audioSrc]);
 
   const togglePlay = () => {
+    if (!audioRef.current || error) return;
+    
     if (isPlaying) {
-      audioRef.current?.pause();
+      audioRef.current.pause();
     } else {
-      audioRef.current?.play();
+      audioRef.current.play().catch(err => {
+        console.error("Ошибка воспроизведения:", err);
+        setError("Не удалось воспроизвести аудио");
+      });
     }
     setIsPlaying(!isPlaying);
   };
@@ -94,47 +111,60 @@ const AudioPlayer = ({ audioSrc, title }: AudioPlayerProps) => {
       <audio ref={audioRef} src={audioSrc} preload="metadata" />
       <div className="mb-4 text-center text-lg font-medium">{title}</div>
       
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-mono">{formatTime(currentTime)}</span>
-        <span className="text-sm font-mono">{formatTime(duration)}</span>
-      </div>
-      
-      <Slider
-        value={[currentTime]}
-        max={duration || 100}
-        step={0.1}
-        onValueChange={handleSeek}
-        className="mb-4"
-      />
-      
-      <div className="flex items-center justify-between">
-        <Button 
-          variant="outline" 
-          size="icon" 
-          onClick={togglePlay}
-          className="h-10 w-10 rounded-full"
-        >
-          {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-        </Button>
-        
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleMute}
-            className="h-8 w-8"
-          >
-            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-          </Button>
-          <Slider
-            value={[isMuted ? 0 : volume]}
-            max={1}
-            step={0.01}
-            onValueChange={handleVolumeChange}
-            className="w-24"
-          />
+      {!isLoaded ? (
+        <div className="text-center py-4">
+          <p>Загрузка аудио...</p>
         </div>
-      </div>
+      ) : error ? (
+        <div className="text-center py-4 text-destructive">
+          <p>{error}</p>
+          <p className="text-sm mt-2">Проверьте, добавлен ли файл аудиозаписи в папку /public/audio/</p>
+        </div>
+      ) : (
+        <>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-mono">{formatTime(currentTime)}</span>
+            <span className="text-sm font-mono">{formatTime(duration)}</span>
+          </div>
+          
+          <Slider
+            value={[currentTime]}
+            max={duration || 100}
+            step={0.1}
+            onValueChange={handleSeek}
+            className="mb-4"
+          />
+          
+          <div className="flex items-center justify-between">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={togglePlay}
+              className="h-10 w-10 rounded-full"
+            >
+              {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+            </Button>
+            
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleMute}
+                className="h-8 w-8"
+              >
+                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+              </Button>
+              <Slider
+                value={[isMuted ? 0 : volume]}
+                max={1}
+                step={0.01}
+                onValueChange={handleVolumeChange}
+                className="w-24"
+              />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
