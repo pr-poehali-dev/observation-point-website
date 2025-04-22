@@ -2,6 +2,10 @@ import { stories } from "@/data/stories";
 import StoriesGrid from "@/components/StoriesGrid";
 
 const Index = () => {
+  // Получаем ID изображения из ссылки Google Drive
+  const authorImageId = "1qBRSLokNuGSjzP0Y6ToVZOR8lKBPeAr1";
+  const authorImageUrl = `https://drive.google.com/uc?export=view&id=${authorImageId}`;
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <header className="py-12 md:py-20 text-center">
@@ -23,11 +27,15 @@ const Index = () => {
       <footer className="py-8 border-t border-border/40 bg-card/30">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
-            <div className="w-20 h-20 overflow-hidden rounded-full">
+            <div className="w-20 h-20 overflow-hidden rounded-full bg-muted">
               <img 
-                src="/author-photo.jpg" 
+                src={authorImageUrl} 
                 alt="Иван Днепровский" 
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Если изображение не загрузилось, показываем заглушку
+                  e.currentTarget.src = "https://placehold.co/80x80/1a1f2c/8e9196?text=ИД";
+                }}
               />
             </div>
             <div className="text-center md:text-left">
