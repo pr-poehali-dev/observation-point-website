@@ -21,16 +21,16 @@ const StoryCard = ({ story }: StoryCardProps) => {
   const isYandexDisk = story.audioSrc.includes('disk.yandex.ru');
   const isGoogleDrive = story.audioSrc.includes('drive.google.com');
   
-  // Преобразуем ссылку Google Drive в прямую ссылку для аудиоплеера
-  const getDirectGoogleDriveUrl = (url: string) => {
+  // Подготавливаем ID файла для Google Drive iframe
+  const getGoogleDriveIframeUrl = (url: string) => {
     const idMatch = url.match(/\/d\/(.+?)\/view/);
     if (idMatch && idMatch[1]) {
-      return `https://drive.google.com/uc?export=download&id=${idMatch[1]}`;
+      return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
     }
     return url;
   };
   
-  const audioSourceUrl = isGoogleDrive ? getDirectGoogleDriveUrl(story.audioSrc) : story.audioSrc;
+  const googleDriveIframeUrl = isGoogleDrive ? getGoogleDriveIframeUrl(story.audioSrc) : '';
 
   return (
     <>
@@ -80,8 +80,18 @@ const StoryCard = ({ story }: StoryCardProps) => {
                   </a>
                 </Button>
               </div>
+            ) : isGoogleDrive ? (
+              <div className="w-full rounded-md overflow-hidden">
+                <iframe 
+                  src={googleDriveIframeUrl} 
+                  width="100%" 
+                  height="100" 
+                  allow="autoplay" 
+                  className="border-0 rounded-md"
+                ></iframe>
+              </div>
             ) : (
-              <AudioPlayer audioSrc={audioSourceUrl} title={`${story.title} - ${story.author}`} />
+              <AudioPlayer audioSrc={story.audioSrc} title={`${story.title} - ${story.author}`} />
             )}
           </div>
         </DialogContent>
