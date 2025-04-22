@@ -6,7 +6,7 @@ export const stories: Story[] = [
     title: "Объект К",
     author: "Леви Морено",
     coverImage: "https://cdn.poehali.dev/files/3baf1ac4-d5de-478e-a60e-34e6e64c6dc3.png",
-    audioSrc: "https://disk.yandex.ru/d/Gjzhf6gVFVo7sA",
+    audioSrc: "https://disk.yandex.ru/d/Gjzhf6gVFVo7sA", // Когда загрузишь на Google Drive, замени эту ссылку
   },
   {
     id: 2,
@@ -58,3 +58,14 @@ export const stories: Story[] = [
     audioSrc: "https://disk.yandex.ru/d/mj0FZSf0UoEDVg",
   },
 ];
+
+/* 
+Пример применения ссылок Google Drive:
+
+После загрузки на Google Drive и настройки доступа "Доступно по ссылке",
+замени ссылки в массиве stories на полученные из Google Drive.
+
+Например, ссылка будет выглядеть примерно так:
+"https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/view?usp=sharing"
+
+*/

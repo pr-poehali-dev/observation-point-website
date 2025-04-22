@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AudioPlayer from "./AudioPlayer";
 
 export interface Story {
   id: number;
@@ -18,6 +19,18 @@ interface StoryCardProps {
 const StoryCard = ({ story }: StoryCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const isYandexDisk = story.audioSrc.includes('disk.yandex.ru');
+  const isGoogleDrive = story.audioSrc.includes('drive.google.com');
+  
+  // Преобразуем ссылку Google Drive в прямую ссылку для аудиоплеера
+  const getDirectGoogleDriveUrl = (url: string) => {
+    const idMatch = url.match(/\/d\/(.+?)\/view/);
+    if (idMatch && idMatch[1]) {
+      return `https://drive.google.com/uc?export=download&id=${idMatch[1]}`;
+    }
+    return url;
+  };
+  
+  const audioSourceUrl = isGoogleDrive ? getDirectGoogleDriveUrl(story.audioSrc) : story.audioSrc;
 
   return (
     <>
@@ -68,14 +81,7 @@ const StoryCard = ({ story }: StoryCardProps) => {
                 </Button>
               </div>
             ) : (
-              <audio 
-                controls 
-                className="w-full" 
-                src={story.audioSrc}
-                preload="metadata"
-              >
-                Ваш браузер не поддерживает аудио-элемент.
-              </audio>
+              <AudioPlayer audioSrc={audioSourceUrl} title={`${story.title} - ${story.author}`} />
             )}
           </div>
         </DialogContent>
