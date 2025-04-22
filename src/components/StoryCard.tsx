@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AudioPlayer from "./AudioPlayer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export interface Story {
   id: number;
@@ -17,6 +17,7 @@ interface StoryCardProps {
 
 const StoryCard = ({ story }: StoryCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isYandexDisk = story.audioSrc.includes('disk.yandex.ru');
 
   return (
     <>
@@ -56,7 +57,26 @@ const StoryCard = ({ story }: StoryCardProps) => {
               <h3 className="text-lg font-medium tracking-tight">{story.title}</h3>
               <p className="text-sm text-muted-foreground">{story.author}</p>
             </div>
-            <AudioPlayer audioSrc={story.audioSrc} title={`${story.title} - ${story.author}`} />
+            
+            {isYandexDisk ? (
+              <div className="text-center">
+                <p className="mb-4">Чтобы послушать рассказ, перейдите по ссылке на Яндекс.Диск:</p>
+                <Button asChild>
+                  <a href={story.audioSrc} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    Открыть аудиозапись <ExternalLink size={16} />
+                  </a>
+                </Button>
+              </div>
+            ) : (
+              <audio 
+                controls 
+                className="w-full" 
+                src={story.audioSrc}
+                preload="metadata"
+              >
+                Ваш браузер не поддерживает аудио-элемент.
+              </audio>
+            )}
           </div>
         </DialogContent>
       </Dialog>
