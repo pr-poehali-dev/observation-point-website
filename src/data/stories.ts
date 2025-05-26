@@ -197,7 +197,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Протокол общения",
         author: "Лоран Девер",
         coverImage:
-          "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/36ee2423-7d7e-4cbc-8d32-4675d04dd710.png",
         audioSrc:
           "https://drive.google.com/file/d/1mP-_W17l7bj7zzi-fH2B_brlxkwzytkp/view?usp=sharing",
       },
@@ -206,7 +206,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Подбор среды",
         author: "Кеннет Ву",
         coverImage:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/bcb12261-e42a-4432-b57c-edac873f318d.png",
         audioSrc:
           "https://drive.google.com/file/d/1veQsJHRaek4uIBdBKvIcWVyo3ILO84HK/view?usp=sharing",
       },
@@ -224,7 +224,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Оптимальный режим",
         author: "Гэвин Фергюсон",
         coverImage:
-          "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/1b1c9e6f-95e4-44d5-b5c3-ba76bf42e9fe.png",
         audioSrc:
           "https://drive.google.com/file/d/1qi5Tnb71cAGQg90oTn7J5d124pk4kxR4/view?usp=sharing",
       },
