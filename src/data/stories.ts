@@ -233,7 +233,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Сигнал",
         author: "Куин Вейсон",
         coverImage:
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/077b044c-18d7-4166-88d1-e6e4a6b60331.png",
         audioSrc:
           "https://drive.google.com/file/d/1iecmRqvKEWYPQHFzT8HRSYJ5PK2j3wjO/view?usp=sharing",
       },
