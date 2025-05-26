@@ -224,7 +224,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Оптимальный режим",
         author: "Гэвин Фергюсон",
         coverImage:
-          "https://cdn.poehali.dev/files/1b1c9e6f-95e4-44d5-b5c3-ba76bf42e9fe.png",
+          "https://cdn.poehali.dev/files/47a498b8-65a9-4f22-bcde-aa2e830d5745.png",
         audioSrc:
           "https://drive.google.com/file/d/1qi5Tnb71cAGQg90oTn7J5d124pk4kxR4/view?usp=sharing",
       },
