@@ -170,7 +170,7 @@ export const storyGroups: StoryGroup[] = [
         title: "По воле большинства",
         author: "Йонас Шпитцер",
         coverImage:
-          "https://images.unsplash.com/photo-1586996292898-71f4036c4e07?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/04e7001e-2195-4ad2-bb3d-d8c6b6cf3f5c.png",
         audioSrc:
           "https://drive.google.com/file/d/1ptcpkYJxATJdsKYihegTcocl15kljZ0y/view?usp=sharing",
       },
@@ -179,7 +179,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Бункер",
         author: "Эдвард Грейсон",
         coverImage:
-          "https://images.unsplash.com/photo-1511919478780-b3eea52e3d90?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/73515573-1c19-4621-a4c3-f6db87a673ae.png",
         audioSrc:
           "https://drive.google.com/file/d/131amBLTWm7KR0eV1pnPT1jZUZuXFWXrJ/view?usp=sharing",
       },
@@ -188,7 +188,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Сторожка",
         author: "Кен Уэлш",
         coverImage:
-          "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/df3930da-069a-4e4a-9b4f-2391caa666f6.png",
         audioSrc:
           "https://drive.google.com/file/d/1sruBoG-dshD1BjKyUdPZ6uIISikGuW8D/view?usp=sharing",
       },
