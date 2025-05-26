@@ -215,7 +215,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Каскад",
         author: "Со Чхэюн",
         coverImage:
-          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=600&fit=crop",
+          "https://cdn.poehali.dev/files/79a7d981-6419-49fa-aeeb-f7222c0b002d.png",
         audioSrc:
           "https://drive.google.com/file/d/15qA37FcFCyieB-kQcQKSKF0iH17pbgAE/view?usp=sharing",
       },
