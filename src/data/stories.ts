@@ -247,7 +247,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Верный помощник",
         author: "Чэнь Гуан",
         coverImage:
-          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/b9f7b598-e593-478b-9194-128f99184ade.jpg",
+          "https://cdn.poehali.dev/files/4dafc70c-3f18-4ae0-ae76-d5fdf49f4a68.png",
         audioSrc:
           "https://drive.google.com/file/d/1Lf2gTSTR_zMRpLsmoCKB78_G1RYMYcOw/view?usp=sharing",
       },
@@ -256,7 +256,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Эхо в ночи",
         author: "Диего Альварадо",
         coverImage:
-          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/11960571-dcfd-4d6c-a94e-852d85d37149.jpg",
+          "https://cdn.poehali.dev/files/09401202-aedb-4d34-91b7-23b37c7bf33b.png",
         audioSrc:
           "https://drive.google.com/file/d/1_oGPaAxxOQMoKuwlgNDjQlM_H01CqUG3/view?usp=sharing",
       },
@@ -265,7 +265,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Межгалактический формуляр",
         author: "Кай Леннарт",
         coverImage:
-          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/2677e148-091d-4279-8de5-e710c046d3fe.jpg",
+          "https://cdn.poehali.dev/files/f8f0c36c-0de9-4f18-be26-da86130bca53.png",
         audioSrc:
           "https://drive.google.com/file/d/1qXrT_pBOFlqScB8VgOxrbQovyrHm-M7g/view?usp=sharing",
       },
@@ -274,7 +274,7 @@ export const storyGroups: StoryGroup[] = [
         title: "Железный ангел",
         author: "Дэвид Камара",
         coverImage:
-          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/2f0bcd28-5424-41b5-81da-5e1577464d3b.jpg",
+          "https://cdn.poehali.dev/files/0df00d01-b619-48b7-a477-effdbcb195d6.png",
         audioSrc:
           "https://drive.google.com/file/d/1oeRTS8ZUDvCvIC1aLggdmNREg9sTfi1n/view?usp=sharing",
       },
