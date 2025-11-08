@@ -249,7 +249,7 @@ export const storyGroups: StoryGroup[] = [
         coverImage:
           "https://cdn.poehali.dev/files/4dafc70c-3f18-4ae0-ae76-d5fdf49f4a68.png",
         audioSrc:
-          "https://drive.google.com/file/d/1Lf2gTSTR_zMRpLsmoCKB78_G1RYMYcOw/view?usp=sharing",
+          "https://drive.google.com/file/d/1-mMVLNU0Jj2vfUASrG1r3k6YcsTxCqew/view?usp=sharing",
       },
       {
         id: 26,
