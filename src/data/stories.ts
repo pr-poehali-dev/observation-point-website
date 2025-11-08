@@ -239,6 +239,47 @@ export const storyGroups: StoryGroup[] = [
       },
     ],
   },
+  {
+    title: "Четвёртый сезон",
+    stories: [
+      {
+        id: 25,
+        title: "Верный помощник",
+        author: "Чэнь Гуан",
+        coverImage:
+          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/b9f7b598-e593-478b-9194-128f99184ade.jpg",
+        audioSrc:
+          "https://drive.google.com/file/d/1Lf2gTSTR_zMRpLsmoCKB78_G1RYMYcOw/view?usp=sharing",
+      },
+      {
+        id: 26,
+        title: "Эхо в ночи",
+        author: "Диего Альварадо",
+        coverImage:
+          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/11960571-dcfd-4d6c-a94e-852d85d37149.jpg",
+        audioSrc:
+          "https://drive.google.com/file/d/1_oGPaAxxOQMoKuwlgNDjQlM_H01CqUG3/view?usp=sharing",
+      },
+      {
+        id: 27,
+        title: "Межгалактический формуляр",
+        author: "Кай Леннарт",
+        coverImage:
+          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/2677e148-091d-4279-8de5-e710c046d3fe.jpg",
+        audioSrc:
+          "https://drive.google.com/file/d/1qXrT_pBOFlqScB8VgOxrbQovyrHm-M7g/view?usp=sharing",
+      },
+      {
+        id: 28,
+        title: "Железный ангел",
+        author: "Дэвид Камара",
+        coverImage:
+          "https://cdn.poehali.dev/projects/52934f45-f027-4e44-9fdf-59498ae03346/files/2f0bcd28-5424-41b5-81da-5e1577464d3b.jpg",
+        audioSrc:
+          "https://drive.google.com/file/d/1oeRTS8ZUDvCvIC1aLggdmNREg9sTfi1n/view?usp=sharing",
+      },
+    ],
+  },
 ];
 
 // Сохраняем совместимость со старым кодом, который может использовать плоский массив
