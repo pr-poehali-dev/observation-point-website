@@ -4,7 +4,7 @@ import { storyGroups } from "@/data/stories";
 
 const Index = () => {
   return (
-    <div className="container mx-auto px-4 py-8 pb-32 space-y-12">
+    <div className="container mx-auto px-4 py-8 pb-40 space-y-12">
       <header className="text-center space-y-6">
         <h1 className="text-4xl md:text-5xl font-bold">Точка наблюдения</h1>
         <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">

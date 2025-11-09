@@ -25,7 +25,7 @@ export const GlobalPlaylist = () => {
   const getEmbedUrl = (driveUrl: string) => {
     const fileIdMatch = driveUrl.match(/\/d\/([^/]+)/);
     if (fileIdMatch) {
-      return `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`;
+      return `https://docs.google.com/uc?export=open&id=${fileIdMatch[1]}`;
     }
     return driveUrl;
   };
@@ -73,10 +73,23 @@ export const GlobalPlaylist = () => {
   };
 
   useEffect(() => {
-    if (audioRef.current && isPlaying) {
-      audioRef.current.play();
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    setCurrentTime(0);
+    setDuration(0);
+    audio.load();
+
+    if (isPlaying) {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Ошибка воспроизведения:", error);
+          setIsPlaying(false);
+        });
+      }
     }
-  }, [currentTrackIndex]);
+  }, [currentTrackIndex, isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -95,8 +108,8 @@ export const GlobalPlaylist = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 w-full md:w-1/2 bg-gradient-to-t from-gray-900 to-gray-800 text-white shadow-2xl border-t border-gray-700 z-50">
-      <div className="px-4">
+    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-gray-800 text-white shadow-2xl border-t border-gray-700 z-40">
+      <div className="w-full max-w-full md:max-w-[50%] px-4">
         <div className="flex flex-col">
           <div className="w-full pt-2">
             <div className="flex items-center gap-2 text-xs text-gray-400 mb-1">
@@ -113,7 +126,7 @@ export const GlobalPlaylist = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between py-3 gap-3">
+          <div className="flex items-center justify-between pb-3 gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <img
                 src={currentStory.coverImage}
@@ -218,6 +231,8 @@ export const GlobalPlaylist = () => {
         onEnded={playNext}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        preload="metadata"
+        crossOrigin="anonymous"
       />
     </div>
   );
