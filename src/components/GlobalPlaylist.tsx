@@ -95,12 +95,12 @@ export const GlobalPlaylist = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-gray-800 text-white shadow-2xl border-t border-gray-700 z-50">
-      <div className="container mx-auto px-4">
+    <div className="fixed bottom-0 left-0 w-full md:w-1/2 bg-gradient-to-t from-gray-900 to-gray-800 text-white shadow-2xl border-t border-gray-700 z-50">
+      <div className="px-4">
         <div className="flex flex-col">
-          <div className="w-full px-4 pt-2">
+          <div className="w-full pt-2">
             <div className="flex items-center gap-2 text-xs text-gray-400 mb-1">
-              <span>{formatTime(currentTime)}</span>
+              <span className="w-10 text-right">{formatTime(currentTime)}</span>
               <input
                 type="range"
                 min="0"
@@ -109,47 +109,47 @@ export const GlobalPlaylist = () => {
                 onChange={handleSeek}
                 className="flex-1 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-0"
               />
-              <span>{formatTime(duration)}</span>
+              <span className="w-10">{formatTime(duration)}</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-between py-3 gap-4">
-            <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="flex items-center justify-between py-3 gap-3">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
               <img
                 src={currentStory.coverImage}
                 alt={currentStory.title}
-                className="w-16 h-16 rounded object-cover flex-shrink-0"
+                className="w-12 h-12 rounded object-cover flex-shrink-0"
               />
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm truncate">
+                <h3 className="font-semibold text-xs truncate">
                   {currentStory.title}
                 </h3>
                 <p className="text-xs text-gray-400 truncate">
-                  {currentStory.author} • {currentStory.seasonTitle}
+                  {currentStory.author}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 flex-shrink-0">
               <button
                 onClick={playPrevious}
                 disabled={currentTrackIndex === 0}
                 className={cn(
-                  "p-2 rounded-full hover:bg-gray-700 transition-colors",
+                  "p-1.5 rounded-full hover:bg-gray-700 transition-colors",
                   currentTrackIndex === 0 && "opacity-30 cursor-not-allowed"
                 )}
               >
-                <Icon name="SkipBack" size={20} />
+                <Icon name="SkipBack" size={18} />
               </button>
 
               <button
                 onClick={togglePlayPause}
-                className="p-3 rounded-full bg-white text-gray-900 hover:bg-gray-200 transition-colors"
+                className="p-2 rounded-full bg-white text-gray-900 hover:bg-gray-200 transition-colors"
               >
                 {isPlaying ? (
-                  <Icon name="Pause" size={24} />
+                  <Icon name="Pause" size={20} />
                 ) : (
-                  <Icon name="Play" size={24} />
+                  <Icon name="Play" size={20} />
                 )}
               </button>
 
@@ -157,19 +157,19 @@ export const GlobalPlaylist = () => {
                 onClick={playNext}
                 disabled={currentTrackIndex === allStories.length - 1}
                 className={cn(
-                  "p-2 rounded-full hover:bg-gray-700 transition-colors",
+                  "p-1.5 rounded-full hover:bg-gray-700 transition-colors",
                   currentTrackIndex === allStories.length - 1 &&
                     "opacity-30 cursor-not-allowed"
                 )}
               >
-                <Icon name="SkipForward" size={20} />
+                <Icon name="SkipForward" size={18} />
               </button>
 
               <button
                 onClick={() => setShowPlaylist(!showPlaylist)}
-                className="p-2 rounded-full hover:bg-gray-700 transition-colors ml-2"
+                className="p-1.5 rounded-full hover:bg-gray-700 transition-colors ml-1"
               >
-                <Icon name="ListMusic" size={20} />
+                <Icon name="ListMusic" size={18} />
               </button>
             </div>
           </div>
